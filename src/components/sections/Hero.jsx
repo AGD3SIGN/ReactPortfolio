@@ -56,7 +56,7 @@ const Hero = () => {
                     style={{ pointerEvents: 'auto' }}
                 >
                     <motion.h1 variants={itemVariants} className={styles.headline}>
-                        Building <span className={styles.gradientText}>Digital Experiences</span> That Matter.
+                        Building <span className={styles.gradientText}>TESTING UPDATES Experiences</span> That Matter.
                     </motion.h1>
 
                     <motion.p variants={itemVariants} className={styles.subheading}>
