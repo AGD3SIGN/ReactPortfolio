@@ -1,6 +1,29 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import { motion, useInView, useSpring, useTransform } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 import styles from './About.module.css';
+
+const Counter = ({ value, prefix = '', suffix = '' }) => {
+    const ref = useRef(null);
+    const inView = useInView(ref, { once: true, margin: "-100px" });
+    const spring = useSpring(0, { mass: 0.8, stiffness: 75, damping: 15 });
+    const displayValue = useTransform(spring, (current) => Math.round(current));
+
+    useEffect(() => {
+        if (inView) {
+            spring.set(value);
+        }
+    }, [inView, value, spring]);
+
+    return (
+        <span ref={ref} className={styles.statNumber}>
+            {prefix}
+            <motion.span>{displayValue}</motion.span>
+            {suffix}
+        </span>
+    );
+};
 
 const About = () => {
     return (
@@ -16,17 +39,17 @@ const About = () => {
 
                         <div className={styles.statsContainer}>
                             <div className={styles.statItem}>
-                                <span className={styles.statNumber}>+200</span>
+                                <Counter value={200} prefix="+" />
                                 <span className={styles.statLabel}>Project completed</span>
                             </div>
                             <div className={styles.separator}></div>
                             <div className={styles.statItem}>
-                                <span className={styles.statNumber}>+750</span>
+                                <Counter value={750} prefix="+" />
                                 <span className={styles.statLabel}>Happy Customer</span>
                             </div>
                             <div className={styles.separator}></div>
                             <div className={styles.statItem}>
-                                <span className={styles.statNumber}>99%</span>
+                                <Counter value={99} suffix="%" />
                                 <span className={styles.statLabel}>Satisfied Customer</span>
                             </div>
                         </div>

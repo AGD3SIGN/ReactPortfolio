@@ -19,6 +19,7 @@
   font-weight: 700;
   margin-bottom: var(--space-md);
   color: hsl(var(--text-primary));
+  text-transform: uppercase;
 }
 
 .text {
@@ -153,5 +154,6 @@
 .rotatingTextSplit {
   overflow: hidden;
   display: inline-flex;
-  padding-bottom: 0.25rem; /* Allow space for springy descent */
+  padding-bottom: 0.25rem;
+  /* Allow space for springy descent */
 }

@@ -43,6 +43,12 @@
   flex-wrap: wrap;
 }
 
+@media (min-width: 1024px) {
+  .statsContainer {
+      flex-wrap: nowrap;
+  }
+}
+
 .statItem {
   display: flex;
   flex-direction: column;
