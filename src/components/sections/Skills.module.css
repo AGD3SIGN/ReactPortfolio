@@ -1,0 +1,115 @@
+.section {
+  padding-block: var(--space-2xl);
+  background-color: hsl(var(--bg-primary));
+}
+
+.header {
+  margin-bottom: var(--space-xl);
+  text-align: center;
+}
+
+.heading {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  color: hsl(var(--text-primary));
+}
+
+.subheading {
+  color: hsl(var(--text-secondary));
+  max-width: 50ch;
+  margin-inline: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-lg);
+}
+
+.categoryCard {
+  background-color: hsl(var(--bg-secondary));
+  border: 1px solid hsl(var(--bg-tertiary));
+  border-radius: 12px;
+  padding: var(--space-lg);
+  transition: border-color 0.3s ease;
+}
+
+.categoryCard:hover {
+  border-color: hsl(var(--accent-primary) / 0.5);
+}
+
+.categoryHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid hsl(var(--bg-tertiary));
+}
+
+.iconWrapper {
+  color: hsl(var(--accent-primary));
+  background-color: hsl(var(--accent-primary) / 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+}
+
+.categoryTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: hsl(var(--text-primary));
+}
+
+.skillsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.skillItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background-color: hsl(var(--bg-primary));
+  border-radius: 6px;
+  color: hsl(var(--text-secondary));
+  font-weight: 500;
+  position: relative;
+  cursor: default;
+}
+
+.skillItem:hover {
+  color: hsl(var(--text-primary));
+  background-color: hsl(var(--bg-tertiary));
+}
+
+.skillIcon {
+  color: hsl(var(--accent-primary));
+  opacity: 0.8;
+}
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  right: var(--space-md);
+  background-color: hsl(var(--text-primary));
+  color: hsl(var(--bg-primary));
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  pointer-events: none;
+}
+
+.skillItem:hover .tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}

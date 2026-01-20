@@ -1,0 +1,167 @@
+.section {
+  padding-block: var(--space-2xl);
+  background-color: hsl(var(--bg-secondary));
+  overflow: hidden; /* Prevent spillover */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+  }
+}
+
+/* Content Column */
+.heading {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  margin-bottom: var(--space-lg);
+  color: hsl(var(--text-primary));
+  line-height: 1.1;
+}
+
+.description {
+  color: hsl(var(--text-secondary));
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: var(--space-2xl);
+  max-width: 55ch;
+}
+
+/* Stats */
+.statsContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.statNumber {
+  font-size: 2rem;
+  font-weight: 800;
+  color: hsl(var(--text-primary));
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 0.9rem;
+  color: hsl(var(--text-primary));
+  font-weight: 500;
+}
+
+.separator {
+  width: 1px;
+  height: 60px;
+  background-color: hsl(var(--text-secondary) / 0.3);
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .separator {
+    display: block;
+  }
+}
+
+/* Image Column */
+.imageColumn {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 1 / 1;
+  border-radius: 40px;
+  /* Custom shape: top-left is sharp/specific, others rounded */
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  overflow: visible; /* Allow badge to overlap */
+}
+
+.profileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 40px;
+  border-top-left-radius: 100px; /* Slight curve to accommodate badge visually if needed, but mockup shows sharp or inset. Let's make it rounded but different. */
+  border-top-left-radius: 160px; /* Large curve for the badge to nest in */
+  border-bottom-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  background-color: hsl(var(--bg-tertiary));
+  filter: grayscale(100%);
+}
+
+/* Badge */
+.badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 140px;
+  height: 140px;
+  transform: translate(-15%, -15%); /* Pull it out */
+  border-radius: 50%;
+  background-color: hsl(
+    var(--bg-primary)
+  ); /* Match background to mask cleanly */
+  /* Or if it sits ON TOP of image, it needs to be opaque. */
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badgeContent {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111; /* Dark badge background */
+  border-radius: 50%;
+  color: white;
+}
+
+.badgeText {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: rotate 20s linear infinite;
+  fill: currentColor;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.arrowIcon {
+  z-index: 2;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

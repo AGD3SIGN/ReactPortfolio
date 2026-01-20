@@ -1,0 +1,157 @@
+.section {
+  padding-block: var(--space-2xl);
+  background-color: hsl(var(--bg-primary));
+}
+
+.wrapper {
+  display: grid;
+  gap: var(--space-2xl);
+  background-color: hsl(var(--bg-secondary));
+  padding: var(--space-2xl);
+  border-radius: 24px;
+  border: 1px solid hsl(var(--bg-tertiary));
+  overflow: hidden;
+  position: relative;
+}
+
+.heading {
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+  color: hsl(var(--text-primary));
+}
+
+.text {
+  color: hsl(var(--text-secondary));
+  margin-bottom: var(--space-lg);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: hsl(var(--text-primary));
+  font-weight: 500;
+}
+
+.icon {
+  color: hsl(var(--accent-primary));
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: hsl(var(--text-primary));
+}
+
+.input,
+.textarea {
+  background-color: hsl(var(--bg-primary));
+  border: 1px solid hsl(var(--bg-tertiary));
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: hsl(var(--text-primary));
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  width: 100%;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: hsl(var(--accent-primary));
+  box-shadow: 0 0 0 3px hsl(var(--accent-primary) / 0.2);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submitBtn {
+  background-color: hsl(var(--text-primary));
+  color: hsl(var(--bg-primary));
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.submitBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px hsl(var(--text-primary) / 0.2);
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: var(--space-lg);
+  }
+}
+
+@media (min-width: 900px) {
+  .wrapper {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+  }
+}
+
+.rotatingText {
+  display: inline-flex;
+  background-color: hsl(var(--accent-primary));
+  color: white;
+  padding: 0.15em 0.6em;
+  border-radius: 8px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.6rem;
+  vertical-align: middle;
+  position: relative;
+}
+
+.rotatingTextSplit {
+  overflow: hidden;
+  display: inline-flex;
+  padding-bottom: 0.25rem; /* Allow space for springy descent */
+}

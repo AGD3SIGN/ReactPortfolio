@@ -1,0 +1,127 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition:
+    background-color 0.3s ease,
+    backdrop-filter 0.3s ease,
+    border-bottom-color 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.scrolled {
+  background-color: hsl(var(--bg-secondary) / 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom-color: hsl(var(--bg-tertiary));
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px; /* Reduced from typical 100 on scroll? Keep stable for now */
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  color: hsl(var(--text-primary));
+}
+
+.dot {
+  color: hsl(var(--accent-primary));
+}
+
+.desktopNav {
+  display: none;
+}
+
+.mobileToggle {
+  background: none;
+  border: none;
+  color: hsl(var(--text-primary));
+  cursor: pointer;
+  padding: var(--space-xs);
+  display: flex;
+}
+
+/* Mobile Nav */
+.mobileNav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: hsl(var(--bg-secondary));
+  border-bottom: 1px solid hsl(var(--bg-tertiary));
+  padding: var(--space-md) 0;
+}
+
+.mobileNavList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.mobileNavLink {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: hsl(var(--text-secondary));
+  transition: color 0.2s ease;
+}
+
+.mobileNavLink:hover {
+  color: hsl(var(--text-primary));
+}
+
+@media (min-width: 768px) {
+  .desktopNav {
+    display: block;
+  }
+
+  .mobileToggle {
+    display: none;
+  }
+
+  .mobileNav {
+    display: none;
+  }
+
+  .navList {
+    display: flex;
+    gap: var(--space-lg);
+    list-style: none;
+  }
+
+  .navItem {
+    position: relative;
+  }
+
+  .navLink {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: hsl(var(--text-secondary));
+    padding-block: var(--space-xs);
+    transition: color 0.3s ease;
+  }
+
+  .navLink:hover,
+  .navLink.active {
+    color: hsl(var(--text-primary));
+  }
+
+  .activeLine {
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: hsl(var(--accent-primary));
+    border-radius: 99px;
+  }
+}

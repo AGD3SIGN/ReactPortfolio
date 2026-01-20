@@ -1,0 +1,41 @@
+@import "./reset.css";
+@import "./variables.css";
+
+/* Selection */
+::selection {
+  background-color: hsl(var(--accent-primary) / 0.3);
+  color: hsl(var(--text-primary));
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--bg-primary));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--bg-tertiary));
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--text-accent));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Utility Containers */
+.container {
+  width: 100%;
+  max-width: 1200px; /* or 1400px */
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: var(--space-lg);
+  }
+}

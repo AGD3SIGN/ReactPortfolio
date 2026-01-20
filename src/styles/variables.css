@@ -1,0 +1,38 @@
+:root {
+  /* Colors - Premium Dark Mode Base */
+  --bg-primary: 0 0% 5%; /* #0d0d0d */
+  --bg-secondary: 0 0% 8%; /* #141414 */
+  --bg-tertiary: 0 0% 12%; /* #1f1f1f */
+
+  --text-primary: 0 0% 98%; /* #fafafa */
+  --text-secondary: 0 0% 60%; /* #999 */
+  --text-accent: 0 0% 40%; /* #666 */
+
+  /* Accents - Subtle & Confident */
+  --accent-primary: 220 100% 60%; /* Vibrant Blue/Indigo */
+  --accent-glow: 220 100% 60%; /* For glow effects */
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+  --space-2xl: 8rem;
+
+  /* Typography */
+  --font-sans:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Menlo", "Monaco", "Courier New", monospace;
+
+  /* Animation */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-color-scheme: light) {
+  /* Optional: Included for completeness, but design focuses on dark premium feel */
+  /* User requested "High-end" which often implies dark, but I'll support light just in case or keep it strict dark if that's the "freelance" vibe. 
+     I'll stick to a dark theme default as per "confident, high-end" usually leaning dark for dev portfolios. */
+}

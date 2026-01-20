@@ -1,0 +1,160 @@
+.section {
+  padding-block: var(--space-2xl);
+  background-color: hsl(
+    var(--bg-primary)
+  ); /* User requested alternating backgrounds in mock, but I'll stick to primary/secondary pattern if desired. Mock had App.jsx alternating. I'll make this Secondary to contrast Skills. */
+  background-color: hsl(var(--bg-secondary));
+}
+
+.header {
+  margin-bottom: var(--space-2xl);
+  text-align: center;
+}
+
+.heading {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  color: hsl(var(--text-primary));
+}
+
+.subheading {
+  color: hsl(var(--text-secondary));
+  max-width: 50ch;
+  margin-inline: auto;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin-inline: auto;
+  padding-block: var(--space-lg);
+}
+
+.lineBase {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: hsl(var(--bg-tertiary));
+  transform: translateX(-50%);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.lineProgress {
+  width: 100%;
+  background-color: hsl(var(--accent-primary));
+  transform-origin: top;
+}
+
+.step {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: var(--space-2xl);
+  position: relative;
+}
+
+.step:last-child {
+  margin-bottom: 0;
+}
+
+.content {
+  background-color: hsl(var(--bg-primary));
+  padding: var(--space-lg);
+  border-radius: 12px;
+  border: 1px solid hsl(var(--bg-tertiary));
+  width: 45%;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.content:hover {
+  transform: translateY(-5px);
+  border-color: hsl(var(--accent-primary) / 0.3);
+}
+
+.iconWrapper {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 48px;
+  background-color: hsl(var(--bg-secondary));
+  border: 2px solid hsl(var(--accent-primary));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: hsl(var(--text-primary));
+  z-index: 2;
+  box-shadow: 0 0 0 4px hsl(var(--bg-secondary)); /* Gap effect */
+}
+
+/* Alternating Layout */
+.left {
+  flex-direction: row;
+}
+
+.left .content {
+  margin-right: auto;
+  text-align: right;
+}
+
+.right {
+  flex-direction: row-reverse;
+}
+
+.right .content {
+  margin-left: auto;
+  text-align: left;
+}
+
+.date {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: hsl(var(--accent-primary));
+  margin-bottom: var(--space-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  color: hsl(var(--text-primary));
+}
+
+.description {
+  color: hsl(var(--text-secondary));
+  line-height: 1.6;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .lineBase {
+    left: 20px;
+  }
+
+  .step {
+    flex-direction: row !important; /* Force items to align right of line */
+    justify-content: flex-start;
+  }
+
+  .iconWrapper {
+    left: 20px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .content {
+    width: auto;
+    margin-left: 60px !important; /* Space for line and icon */
+    margin-right: 0 !important;
+    text-align: left !important;
+  }
+}
