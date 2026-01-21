@@ -58,8 +58,8 @@ const Experience = () => {
                 </motion.div>
 
                 <div className={styles.timeline}>
-                    {/* Animated Line */}
-                    <div className={styles.lineBase}>
+                    {/* Continuous Line Background */}
+                    <div className={styles.lineTrack}>
                         <motion.div
                             className={styles.lineProgress}
                             style={{ height: lineHeight }}
@@ -69,17 +69,26 @@ const Experience = () => {
                     {steps.map((step, index) => (
                         <motion.div
                             key={step.id}
-                            className={clsx(styles.step, index % 2 === 0 ? styles.left : styles.right)}
-                            initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            className={styles.step}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-10%" }}
-                            transition={{ duration: 0.6, ease: "easeOut" }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
                         >
-                            <div className={styles.iconWrapper}>
-                                {step.icon}
-                            </div>
-                            <div className={styles.content}>
+                            {/* Left: Date/Meta */}
+                            <div className={styles.meta}>
                                 <span className={styles.date}>{step.date}</span>
+                            </div>
+
+                            {/* Center: Icon */}
+                            <div className={styles.iconColumn}>
+                                <div className={styles.iconWrapper}>
+                                    {step.icon}
+                                </div>
+                            </div>
+
+                            {/* Right: Content */}
+                            <div className={styles.content}>
                                 <h3 className={styles.title}>{step.title}</h3>
                                 <p className={styles.description}>{step.description}</p>
                             </div>

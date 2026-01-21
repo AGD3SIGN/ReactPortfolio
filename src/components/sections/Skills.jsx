@@ -16,34 +16,28 @@ import styles from './Skills.module.css';
 
 const skillCategories = [
     {
-        title: 'Frontend Development',
-        icon: <Monitor size={24} />,
-        skills: [
-            { name: 'React', level: 'Expert', icon: <Code2 size={20} /> },
-            { name: 'TypeScript', level: 'Advanced', icon: <Terminal size={20} /> },
-            { name: 'Next.js', level: 'Advanced', icon: <Globe size={20} /> },
-            { name: 'Tailwind/CSS', level: 'Expert', icon: <Layout size={20} /> },
-            { name: 'Framer Motion', level: 'Intermediate', icon: <Workflow size={20} /> },
-        ]
+        title: 'UI/UX Design',
+        description: 'Creating intuitive, engaging interfaces that delight users.',
+        icon: <Layout size={32} />,
+        theme: 'blue',
+        image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=2564&auto=format&fit=crop', // Abstract blue/tech
+        skills: ['Figma', 'Prototyping', 'Design Systems', 'User Research']
     },
     {
-        title: 'Backend & Infrastructure',
-        icon: <Server size={24} />,
-        skills: [
-            { name: 'Node.js', level: 'Advanced', icon: <Cpu size={20} /> },
-            { name: 'PostgreSQL', level: 'Intermediate', icon: <Database size={20} /> },
-            { name: 'GraphQL', level: 'Intermediate', icon: <Code2 size={20} /> },
-            { name: 'AWS', level: 'Intermediate', icon: <Globe size={20} /> },
-        ]
+        title: 'Development',
+        description: 'Building robust, scalable applications with modern stacks.',
+        icon: <Terminal size={32} />,
+        theme: 'orange',
+        image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2670&auto=format&fit=crop', // Abstract orange/warm
+        skills: ['React', 'Next.js', 'Node.js', 'TypeScript', 'Tailwind']
     },
     {
-        title: 'Tools & Workflow',
-        icon: <Terminal size={24} />,
-        skills: [
-            { name: 'Git', level: 'Expert', icon: <Terminal size={20} /> },
-            { name: 'Docker', level: 'Intermediate', icon: <Server size={20} /> },
-            { name: 'Figma', level: 'Advanced', icon: <Layout size={20} /> },
-        ]
+        title: 'Brand Strategy',
+        description: 'Defining digital presence and visual identity.',
+        icon: <Globe size={32} />,
+        theme: 'dark',
+        image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop', // Abstract dark
+        skills: ['SEO', 'Analytics', 'Content Strategy', 'Marketing']
     }
 ];
 
@@ -81,37 +75,32 @@ const Skills = () => {
                 </motion.div>
 
                 <div className={styles.grid}>
-                    {skillCategories.map((category, idx) => (
+                    {skillCategories.map((category) => (
                         <motion.div
                             key={category.title}
-                            className={styles.categoryCard}
+                            className={`${styles.card} ${styles[category.theme]}`}
                             variants={containerVariants}
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, margin: "-50px" }}
                         >
-                            <div className={styles.categoryHeader}>
-                                <div className={styles.iconWrapper}>{category.icon}</div>
-                                <h3 className={styles.categoryTitle}>{category.title}</h3>
+                            <div className={styles.cardImageWrapper}>
+                                <img src={category.image} alt="" className={styles.cardImage} />
+                                <div className={styles.cardOverlay}></div>
                             </div>
 
-                            <div className={styles.skillsList}>
-                                {category.skills.map((skill) => (
-                                    <motion.div
-                                        key={skill.name}
-                                        className={styles.skillItem}
-                                        variants={itemVariants}
-                                        whileHover={{ scale: 1.05, x: 5 }}
-                                    >
-                                        <span className={styles.skillIcon}>{skill.icon}</span>
-                                        <span className={styles.skillName}>{skill.name}</span>
+                            <div className={styles.cardContent}>
+                                <div className={styles.iconWrapper}>
+                                    {category.icon}
+                                </div>
+                                <h3 className={styles.cardTitle}>{category.title}</h3>
+                                <p className={styles.cardDesc}>{category.description}</p>
 
-                                        {/* Tooltip */}
-                                        <div className={styles.tooltip}>
-                                            {skill.level}
-                                        </div>
-                                    </motion.div>
-                                ))}
+                                <div className={styles.tags}>
+                                    {category.skills.map(skill => (
+                                        <span key={skill} className={styles.tag}>{skill}</span>
+                                    ))}
+                                </div>
                             </div>
                         </motion.div>
                     ))}

@@ -1,0 +1,87 @@
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 1rem 2rem;
+  background-color: hsl(var(--text-primary)); /* Black on White */
+  color: hsl(var(--bg-primary));
+  border-radius: 99px;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  /* Ensure no transform conflicts */
+}
+
+.text {
+  position: relative;
+  z-index: 2;
+}
+
+.arrow {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.2s ease;
+}
+
+.button:hover .arrow {
+  transform: translateX(4px);
+}
+
+.paper {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e5e5e5;
+  pointer-events: none;
+  z-index: 1; /* Behind text? No, should be on top/behind properly. Actually effectively "behind" visually if it pops "up" from behind the button? 
+                 If it pops UP, it should be physically above in Y but maybe Z-index depends.
+                 Let's make it pop up from the TOP edge. */
+  transform-origin: bottom center;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -40px; /* Centering fix for absolute + translateX combination if needed, or translate-x handles it */
+}
+
+/* Fix centering */
+.paper {
+  margin-left: 0; /* use translate per Framer */
+}
+
+.paperContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.paperText {
+  font-family: "Comic Sans MS", "Chalkboard SE", sans-serif; /* Handwrit-ish */
+  font-size: 0.7rem;
+  color: #333;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.paperLines {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.line {
+  width: 100%;
+  height: 2px;
+  background-color: #eee;
+  border-radius: 1px;
+}

@@ -34,7 +34,7 @@ const Contact = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className={styles.wrapper}
+                    className={styles.banner}
                 >
                     <div className={styles.content}>
                         <h2 className={styles.heading}>
@@ -57,7 +57,7 @@ const Contact = () => {
                             Have a project in mind or just want to say hi? I'm currently available for new opportunities.
                         </p>
 
-                        <div className={styles.info}>
+                        <div className={styles.contactInfo}>
                             <div className={styles.infoItem}>
                                 <Mail className={styles.icon} size={20} />
                                 <span>hello@example.com</span>

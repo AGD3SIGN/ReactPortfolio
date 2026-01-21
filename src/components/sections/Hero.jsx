@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Mail } from 'lucide-react';
 import Beams from '../ui/Beams';
@@ -33,18 +32,7 @@ const Hero = () => {
         <section id="hero" className={styles.hero}>
             {/* Background Ambience */}
             <div className={styles.background} style={{ zIndex: 0 }}>
-                <div style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}>
-                    <Beams
-                        beamWidth={3}
-                        beamHeight={30}
-                        beamNumber={20}
-                        lightColor="#ffffff"
-                        speed={2}
-                        noiseIntensity={1.75}
-                        scale={0.2}
-                        rotation={30}
-                    />
-                </div>
+                {/* Simplified Clean Background (White) */}
             </div>
 
             <div className={`container ${styles.container}`} style={{ position: 'relative', zIndex: 1, pointerEvents: 'none' }}>

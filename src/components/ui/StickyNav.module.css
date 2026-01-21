@@ -1,0 +1,61 @@
+.navWrapper {
+  position: fixed;
+  top: 1rem; /* Floating with margin */
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.nav {
+  pointer-events: auto;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.5rem 1.5rem;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); /* Softer shadow */
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: hsl(var(--text-primary));
+  letter-spacing: -0.02em;
+  margin-right: 1rem;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  color: hsl(var(--text-secondary));
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.navLink:hover {
+  color: hsl(var(--text-primary));
+  background-color: rgba(0, 0, 0, 0.03); /* Subtle hover background */
+}
+
+.navBtn {
+  padding: 0.5rem 1.25rem;
+  font-size: 0.9rem;
+}

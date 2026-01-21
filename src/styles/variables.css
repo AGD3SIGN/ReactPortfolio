@@ -1,16 +1,16 @@
 :root {
-  /* Colors - Premium Dark Mode Base */
-  --bg-primary: 0 0% 5%; /* #0d0d0d */
-  --bg-secondary: 0 0% 8%; /* #141414 */
-  --bg-tertiary: 0 0% 12%; /* #1f1f1f */
+  /* Colors - Clean Light Mode Base */
+  --bg-primary: 0 0% 100%; /* #ffffff */
+  --bg-secondary: 0 0% 98%; /* #fafafa */
+  --bg-tertiary: 0 0% 95%; /* #f2f2f2 */
 
-  --text-primary: 0 0% 98%; /* #fafafa */
-  --text-secondary: 0 0% 60%; /* #999 */
-  --text-accent: 0 0% 40%; /* #666 */
+  --text-primary: 0 0% 5%; /* #0d0d0d - Almost Black */
+  --text-secondary: 0 0% 40%; /* #666 */
+  --text-accent: 0 0% 60%; /* #999 */
 
-  /* Accents - Subtle & Confident */
-  --accent-primary: 220 100% 60%; /* Vibrant Blue/Indigo */
-  --accent-glow: 220 100% 60%; /* For glow effects */
+  /* Accents - Vibrant Blue (Kept) */
+  --accent-primary: 220 100% 55%; /* Slightly darker for contrast on white */
+  --accent-glow: 220 100% 60%;
 
   /* Spacing */
   --space-xs: 0.25rem;

@@ -1,6 +1,7 @@
 .section {
   padding-block: var(--space-2xl);
-  background-color: hsl(var(--bg-secondary));
+  background-color: #111; /* Dark theme for this section */
+  color: white;
 }
 
 .header {
@@ -12,44 +13,41 @@
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
   margin-bottom: var(--space-sm);
-  color: hsl(var(--text-primary));
+  color: white;
 }
 
 .subheading {
-  color: hsl(var(--text-secondary));
+  color: #888;
   max-width: 50ch;
   margin-inline: auto;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: var(--space-lg);
 }
 
 .card {
-  background-color: hsl(var(--bg-primary));
-  border-radius: 16px;
+  position: relative;
+  background-color: #1a1a1a;
+  border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-  border: 1px solid hsl(var(--bg-tertiary));
-  display: flex;
-  flex-direction: column;
+  aspect-ratio: 16 / 10;
+  transition: transform 0.3s ease;
+  border: 1px solid #333;
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
-  border-color: hsl(var(--accent-primary) / 0.3);
+  transform: translateY(-5px);
+  border-color: hsl(var(--accent-primary));
 }
 
 .imageWrapper {
-  position: relative;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
 
 .image {
@@ -57,75 +55,68 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
+  opacity: 0.7; /* Dim image slightly */
 }
 
 .card:hover .image {
   transform: scale(1.05);
+  opacity: 0.5;
 }
 
+/* Overlay Button (Top Right) */
 .overlay {
   position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.card:hover .overlay {
-  opacity: 1;
+  top: 1rem;
+  right: 1rem;
+  z-index: 3;
 }
 
 .viewBtn {
-  background-color: hsl(var(--text-primary));
-  color: hsl(var(--bg-primary));
-  padding: 0.75rem 1.5rem;
+  background-color: white;
+  color: black;
+  padding: 0.5rem 1rem;
   border-radius: 99px;
-  font-weight: 600;
-  transform: translateY(20px);
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-weight: 700;
+  font-size: 0.8rem;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
 }
 
 .card:hover .viewBtn {
+  opacity: 1;
   transform: translateY(0);
 }
 
+/* Card Content (Bottom Overlay) */
 .cardContent {
-  padding: var(--space-lg);
-  flex: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  z-index: 2;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  pointer-events: none; /* Let clicks pass to card */
 }
 
 .cardTitle {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: var(--space-xs);
-  color: hsl(var(--text-primary));
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: white;
 }
 
 .cardDesc {
-  font-size: 0.95rem;
-  color: hsl(var(--text-secondary));
-  margin-bottom: var(--space-md);
-  flex: 1;
+  display: none; /* Hide description in grid view for cleaner look, show in modal */
 }
 
 .tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-xs);
-}
-
-.tag {
-  background-color: hsl(var(--bg-tertiary));
-  color: hsl(var(--text-accent));
-  padding: 0.25rem 0.75rem;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 500;
+  display: none; /* Hide tags in grid */
 }
 
 /* Modal Content Styles */
