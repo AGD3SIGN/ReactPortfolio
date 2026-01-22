@@ -1,61 +1,152 @@
 .navWrapper {
   position: fixed;
-  top: 1rem; /* Floating with margin */
+  top: 1.5rem; /* Floating from top */
   left: 0;
-  right: 0;
+  width: 100%;
   z-index: 100;
   display: flex;
   justify-content: center;
   pointer-events: none;
+  padding: 0 1.5rem; /* Safety padding for small screens */
 }
+
+/* Optional: If we want a top announcement bar, we'd need to account for it, 
+   but for now we assume just the nav floats. */
 
 .nav {
   pointer-events: auto;
-  background-color: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 0.5rem 1.5rem;
-  border-radius: 99px;
+  width: 100%;
+  max-width: 1200px; /* Constrained width */
+  height: 70px; /* Slightly shorter for a pill feel */
+  background-color: #fff; /* Solid white or slightly translucent */
+  /* backdrop-filter: blur(10px);  If we want transluency*/
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 9999px; /* Pill shape or just rounded rect? Ditto is usually rounded rect. Let's do rounded rect. */
+  border-radius: 12px; /* Smooth rounded corners, not fully pill unless requested */
   display: flex;
   align-items: center;
-  gap: 2rem;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); /* Softer shadow */
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03); /* Subtle drop shadow */
+  transition: all 0.3s ease;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .logo {
+  font-family: "Inter", sans-serif;
   font-weight: 800;
-  font-size: 1.1rem;
-  color: hsl(var(--text-primary));
-  letter-spacing: -0.02em;
-  margin-right: 1rem;
+  font-size: 1.5rem;
+  color: #000;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: -0.03em;
 }
 
 .navList {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
 .navLink {
-  color: hsl(var(--text-secondary));
+  color: #4b5563;
   text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
 }
 
 .navLink:hover {
-  color: hsl(var(--text-primary));
-  background-color: rgba(0, 0, 0, 0.03); /* Subtle hover background */
+  color: #000;
 }
 
-.navBtn {
-  padding: 0.5rem 1.25rem;
-  font-size: 0.9rem;
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.docLink {
+  color: #4b5563;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-right: 1rem;
+  display: none; /* Hide on small, show on large if space permits */
+}
+
+.loginBtn {
+  background-color: #f3f4f6;
+  color: #000;
+  padding: 0.6rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.2s;
+}
+.loginBtn:hover {
+  background-color: #e5e7eb;
+}
+
+.ctaBtn {
+  background-color: #000;
+  color: #fff;
+  padding: 0.6rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
+}
+
+.ctaBtn:hover {
+  background-color: #333;
+  transform: translateY(-1px);
+}
+
+/* Media Queries */
+@media (min-width: 1024px) {
+  .docLink {
+    display: inline-block;
+  }
+}
+
+@media (max-width: 768px) {
+  .navWrapper {
+    top: 1rem;
+    padding: 0 1rem;
+  }
+
+  .navList {
+    display: none; /* Collapsed menu would go here */
+  }
+
+  .loginBtn {
+    display: none;
+  }
 }

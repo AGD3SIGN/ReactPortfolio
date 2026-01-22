@@ -1,4 +1,5 @@
 import React from 'react';
+import SectionHeader from '../ui/SectionHeader';
 import { motion } from 'framer-motion';
 import {
     Code2,
@@ -64,34 +65,25 @@ const Skills = () => {
     return (
         <section id="skills" className={styles.section}>
             <div className="container">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className={styles.header}
-                >
-                    <h2 className={styles.heading}>Technical Expertise</h2>
-                    <p className={styles.subheading}>Tools and technologies I use to bring ideas to life.</p>
-                </motion.div>
+                <SectionHeader
+                    title="Technical Expertise"
+                    subtitle="Tools and technologies I use to bring ideas to life."
+                    align="center"
+                />
 
                 <div className={styles.grid}>
                     {skillCategories.map((category) => (
                         <motion.div
                             key={category.title}
-                            className={`${styles.card} ${styles[category.theme]}`}
+                            className={styles.card}
                             variants={containerVariants}
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, margin: "-50px" }}
                         >
-                            <div className={styles.cardImageWrapper}>
-                                <img src={category.image} alt="" className={styles.cardImage} />
-                                <div className={styles.cardOverlay}></div>
-                            </div>
-
                             <div className={styles.cardContent}>
                                 <div className={styles.iconWrapper}>
-                                    {category.icon}
+                                    {React.cloneElement(category.icon, { strokeWidth: 1.5 })}
                                 </div>
                                 <h3 className={styles.cardTitle}>{category.title}</h3>
                                 <p className={styles.cardDesc}>{category.description}</p>

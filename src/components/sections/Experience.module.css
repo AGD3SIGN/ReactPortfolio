@@ -1,165 +1,145 @@
 .section {
-  padding-block: var(--space-2xl);
-  background-color: hsl(
-    var(--bg-primary)
-  ); /* User requested alternating backgrounds in mock, but I'll stick to primary/secondary pattern if desired. Mock had App.jsx alternating. I'll make this Secondary to contrast Skills. */
-  background-color: hsl(var(--bg-secondary));
+  padding: 8rem 0;
+  background-color: #fff;
+  color: #000;
+  overflow: hidden;
 }
 
-.header {
-  margin-bottom: var(--space-2xl);
-  text-align: center;
-}
-
-.heading {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  margin-bottom: var(--space-sm);
-  color: hsl(var(--text-primary));
-}
-
-.subheading {
-  color: hsl(var(--text-secondary));
-  max-width: 50ch;
-  margin-inline: auto;
-}
-
-/* Timeline Container */
 .timeline {
-  max-width: 900px;
-  margin-inline: auto;
-  display: flex;
-  flex-direction: column;
   position: relative;
-  /* Ensure plenty of space */
-  gap: var(--space-xl);
+  margin-top: 4rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Scroll Line Track */
 .lineTrack {
   position: absolute;
-  /* Centered in the 60px icon column.
-     Left col is 180px. Icon col starts at 180px. Center is 180 + 30 = 210px.
-  */
-  left: 210px;
-  top: 30px; /* Center of first icon (60px height / 2) */
+  left: 2rem;
+  top: 1rem; /* Start slightly lower to align with first icon center */
   bottom: 0;
   width: 2px;
-  background-color: hsl(var(--bg-tertiary));
-  transform: translateX(-50%);
+  background-color: #f3f4f6;
   z-index: 0;
 }
 
 .lineProgress {
   width: 100%;
-  background-color: hsl(var(--accent-primary));
+  background-color: #dffe00; /* Acid Lime */
   transform-origin: top;
-  /* height handled by JS */
 }
 
 .step {
-  display: grid;
-  grid-template-columns: 180px 60px 1fr;
-  gap: var(--space-lg);
-  align-items: flex-start; /* Align to top to handle multi-line text cleanly */
   position: relative;
+  display: flex;
+  gap: 3rem;
+  margin-bottom: 4rem;
   z-index: 1;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
 }
 
-/* Adjust LineTrack position based on new grid */
-/* This rule is now redundant as .lineTrack is redefined above */
+.step:hover {
+  background-color: #fafafa;
+}
 
 .step:last-child {
   margin-bottom: 0;
 }
 
-/* Meta Column (Left) */
 .meta {
+  width: 6rem; /* Match spacing around line */
+  flex-shrink: 0;
   text-align: right;
-  /* Align text with the center of the icon (60px height).
-     Text line-height is usually ~1.5. Font size 1rem.
-     Padding top approx (60 - 24)/2 = 18px roughly to center visually.
-  */
-  padding-top: 18px;
+  padding-top: 0.5rem;
 }
 
-.date {
-  display: block;
-  font-size: 1rem;
-  font-weight: 700;
-  color: white; /* Dark theme text */
-}
-
-/* Icon Column (Center) */
 .iconColumn {
+  position: absolute;
+  left: 2rem; /* Center on line */
+  top: 1rem; /* Align with top padding */
+  transform: translateX(-50%);
   display: flex;
+  align-items: center;
   justify-content: center;
-  height: 100%;
-  min-height: 120px; /* Ensure space between steps */
 }
 
 .iconWrapper {
-  width: 60px;
-  height: 60px;
-  background-color: #1a1a1a; /* Dark circle background */
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border: 2px solid #000;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #000;
+  transition: all 0.3s ease;
   z-index: 2;
-  border: 4px solid #111; /* Match section bg to create "gap" around line */
-  font-size: 1.2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
 }
 
-/* Content Column (Right) */
+.step:hover .iconWrapper {
+  background-color: #dffe00; /* Acid fill on hover */
+  transform: scale(1.1);
+  box-shadow: 0 0 0 4px rgba(223, 254, 0, 0.4);
+}
+
 .content {
-  /* Align with icon center */
-  padding-top: 14px;
+  flex-grow: 1;
+  padding-left: 2rem; /* Space for icon */
+  padding-top: 0.2rem;
+}
+
+.date {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #9ca3af;
+  text-transform: uppercase;
+  display: block;
 }
 
 .title {
+  font-family: "Inter", sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
-  color: white;
+  color: #000;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
 }
 
 .description {
-  color: #999;
+  font-size: 1.05rem;
+  color: #4b5563;
   line-height: 1.6;
-  font-size: 1rem;
-  max-width: 50ch;
 }
 
-/* Mobile */
 @media (max-width: 768px) {
-  .timeline {
-    padding-left: 0;
+  .lineTrack {
+    left: 1.5rem;
+  }
+
+  .iconColumn {
+    left: 1.5rem;
   }
 
   .step {
-    grid-template-columns: 50px 1fr; /* Icon | Content */
-    gap: var(--space-md);
+    gap: 1rem;
+    flex-direction: column;
+    padding-left: 4rem; /* Indent everything past the icon */
   }
 
   .meta {
-    display: none;
-  }
-
-  .lineTrack {
-    left: 25px; /* Half of 50px */
-    top: 25px;
-  }
-
-  .iconWrapper {
-    width: 50px;
-    height: 50px;
-    border-width: 3px;
+    width: auto;
+    text-align: left;
+    margin-bottom: 0.5rem;
   }
 
   .content {
-    padding-top: 8px;
+    padding-left: 0;
+  }
+
+  .iconColumn {
+    top: 1rem; /* Keep icon at top */
   }
 }

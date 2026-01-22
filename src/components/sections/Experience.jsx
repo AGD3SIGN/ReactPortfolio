@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import SectionHeader from '../ui/SectionHeader';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Search, PenTool, Code, Rocket } from 'lucide-react';
 import styles from './Experience.module.css';
@@ -47,15 +48,11 @@ const Experience = () => {
     return (
         <section id="experience" className={styles.section} ref={containerRef}>
             <div className="container">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className={styles.header}
-                >
-                    <h2 className={styles.heading}>My Process</h2>
-                    <p className={styles.subheading}>A structured approach to delivering excellence.</p>
-                </motion.div>
+                <SectionHeader
+                    title="My Process"
+                    subtitle="A structured approach to delivering excellence."
+                    align="center"
+                />
 
                 <div className={styles.timeline}>
                     {/* Continuous Line Background */}

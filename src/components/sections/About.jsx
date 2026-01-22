@@ -67,7 +67,7 @@ const About = () => {
                                         <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" />
                                         <text>
                                             <textPath href="#circlePath" startOffset="50%" textAnchor="middle">
-                                                10+ Years of Experience • View Work •
+                                                Based in San Francisco • Open to Work •
                                             </textPath>
                                         </text>
                                     </svg>

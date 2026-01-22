@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Mail } from 'lucide-react';
-import Beams from '../ui/Beams';
+import { ArrowRight, ChevronRight, Play } from 'lucide-react';
+import DotGrid from '../ui/DotGrid';
 import styles from './Hero.module.css';
 
 const containerVariants = {
@@ -8,21 +8,20 @@ const containerVariants = {
     visible: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.2,
-            delayChildren: 0.1,
+            staggerChildren: 0.1,
+            delayChildren: 0.2,
         },
     },
 };
 
 const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
         opacity: 1,
         y: 0,
         transition: {
-            type: 'spring',
-            stiffness: 50,
-            damping: 20,
+            duration: 0.6,
+            ease: [0.16, 1, 0.3, 1], // easeOutExpo-ish
         }
     },
 };
@@ -30,33 +29,41 @@ const itemVariants = {
 const Hero = () => {
     return (
         <section id="hero" className={styles.hero}>
-            {/* Background Ambience */}
-            <div className={styles.background} style={{ zIndex: 0 }}>
-                {/* Simplified Clean Background (White) */}
+            <div className={styles.background}>
+                <DotGrid
+                    dotSize={4}
+                    gap={24}
+                    baseColor="#e5e5e5"
+                    activeColor="#000000"
+                    proximity={100}
+                    shockRadius={200}
+                />
             </div>
 
-            <div className={`container ${styles.container}`} style={{ position: 'relative', zIndex: 1, pointerEvents: 'none' }}>
+            <div className={styles.container}>
                 <motion.div
                     className={styles.content}
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    style={{ pointerEvents: 'auto' }}
                 >
                     <motion.h1 variants={itemVariants} className={styles.headline}>
-                        Building <span className={styles.gradientText}>Digital Experiences</span> That Matter.
+                        Resilient Digital <br />
+                        Experiences.
+                        <span className={styles.greyText}>Servers & Cloud Optional.</span>
                     </motion.h1>
 
-                    <motion.p variants={itemVariants} className={styles.subheading}>
-                        I’m a freelance full-stack developer specializing in building high-performance, design-led web applications that scale with your business.
+                    <motion.p variants={itemVariants} className={styles.description}>
+                        I build high-performance web applications that work everywhere.
+                        Offline-first, design-led, and scalable by default.
                     </motion.p>
 
                     <motion.div variants={itemVariants} className={styles.ctaGroup}>
                         <a href="#projects" className={styles.primaryBtn}>
-                            View Work <ArrowRight size={18} />
+                            <ChevronRight size={20} style={{ fill: "none" }} /> View Recent Work
                         </a>
                         <a href="#contact" className={styles.secondaryBtn}>
-                            Get in Touch <Mail size={18} />
+                            Start a Project
                         </a>
                     </motion.div>
                 </motion.div>

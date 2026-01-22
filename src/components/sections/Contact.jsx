@@ -39,19 +39,21 @@ const Contact = () => {
                     <div className={styles.content}>
                         <h2 className={styles.heading}>
                             Let's Build Something
-                            <RotatingText
-                                texts={['Amazing', 'Unique', 'Scalable', 'Secure']}
-                                mainClassName={styles.rotatingText}
-                                splitLevelClassName={styles.rotatingTextSplit}
-                                staggerFrom={"last"}
-                                initial={{ y: "100%" }}
-                                animate={{ y: 0 }}
-                                exit={{ y: "-120%" }}
-                                staggerDuration={0.025}
-                                animatePresenceMode="popLayout"
-                                transition={{ type: "spring", damping: 20, stiffness: 80, mass: 1 }}
-                                rotationInterval={1800}
-                            />
+                            Let's Build Something
+                            <div className={styles.rotatingWrapper}>
+                                <RotatingText
+                                    texts={['Amazing', 'Unique', 'Scalable', 'Secure']}
+                                    mainClassName={styles.rotatingText}
+                                    staggerFrom={"last"}
+                                    initial={{ y: "100%" }}
+                                    animate={{ y: 0 }}
+                                    exit={{ y: "-120%" }}
+                                    staggerDuration={0.025}
+                                    splitLevelClassName={styles.splitLevel}
+                                    transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                                    rotationInterval={2000}
+                                />
+                            </div>
                         </h2>
                         <p className={styles.text}>
                             Have a project in mind or just want to say hi? I'm currently available for new opportunities.

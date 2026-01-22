@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SectionHeader from '../ui/SectionHeader';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Code, Layers } from 'lucide-react';
 import styles from './Projects.module.css';
@@ -13,6 +14,9 @@ const projects = [
         image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop',
         tags: ['React', 'D3.js', 'Node.js'],
         fullDescription: 'This dashboard allows retailers to track sales, inventory, and customer metrics in real-time. Built with React for the frontend and Node.js for the API layer.',
+        challenges: 'Handling real-time data flow without performance bottlenecks.',
+        solution: 'Implemented WebSocket connections and batched updates to reduce render cycles.',
+        techStack: ['React', 'Redux', 'D3.js', 'Node.js', 'Socket.io', 'PostgreSQL'],
         link: '#',
         github: '#'
     },
@@ -23,6 +27,9 @@ const projects = [
         image: 'https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=2670&auto=format&fit=crop',
         tags: ['React Native', 'Framer'],
         fullDescription: 'A concept banking app focused on smooth transitions and biometric security flows.',
+        challenges: 'Achieving 60fps animations on lower-end Android devices.',
+        solution: 'Used Reanimated 2 for native-thread driven animations.',
+        techStack: ['React Native', 'Expo', 'Reanimated', 'Framer Motion'],
         link: '#',
         github: '#'
     },
@@ -33,6 +40,9 @@ const projects = [
         image: 'https://images.unsplash.com/photo-1545665277-5937489579f2?q=80&w=2670&auto=format&fit=crop',
         tags: ['Three.js', 'WebGL', 'GSAP'],
         fullDescription: 'Utilizing Three.js to create immersive 3D experiences directly in the browser.',
+        challenges: 'Loading heavy 3D assets quickly.',
+        solution: 'Implemented progressive loading and draco compression for 3D models.',
+        techStack: ['React', 'Three.js', 'React Three Fiber', 'GSAP', 'Vite'],
         link: '#',
         github: '#'
     }
@@ -56,15 +66,10 @@ const Projects = () => {
     return (
         <section id="projects" className={styles.section}>
             <div className="container">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    className={styles.header}
-                >
-                    <h2 className={styles.heading}>Selected Work</h2>
-                    <p className={styles.subheading}>A collection of projects that define my journey.</p>
-                </motion.div>
+                <SectionHeader
+                    title="Selected Work"
+                    subtitle="A collection of projects that define my journey."
+                />
 
                 <div className={styles.grid}>
                     {projects.map((project, index) => (
@@ -105,17 +110,43 @@ const Projects = () => {
             >
                 {selectedProject && (
                     <div className={styles.modalContent}>
-                        <div className={styles.modalImageWrapper}>
-                            <img src={selectedProject.image} alt={selectedProject.title} className={styles.modalImage} />
-                        </div>
-                        <p className={styles.modalDesc}>{selectedProject.fullDescription}</p>
-                        <div className={styles.modalActions}>
-                            <a href={selectedProject.link} className={styles.modalLink} target="_blank" rel="noopener noreferrer">
-                                <ExternalLink size={18} /> Live Demo
-                            </a>
-                            <a href={selectedProject.github} className={styles.modalLinkSecondary} target="_blank" rel="noopener noreferrer">
-                                <Github size={18} /> Source Code
-                            </a>
+                        <div className={styles.modalBody}>
+                            <div className={styles.modalLeft}>
+                                <div className={styles.modalImageWrapper}>
+                                    <img src={selectedProject.image} alt={selectedProject.title} className={styles.modalImage} />
+                                </div>
+                                <div className={styles.modalActions}>
+                                    <a href={selectedProject.link} className={styles.modalLink} target="_blank" rel="noopener noreferrer">
+                                        <ExternalLink size={18} /> Live Demo
+                                    </a>
+                                    <a href={selectedProject.github} className={styles.modalLinkSecondary} target="_blank" rel="noopener noreferrer">
+                                        <Github size={18} /> Source Code
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div className={styles.modalRight}>
+                                <p className={styles.modalDesc}>{selectedProject.fullDescription}</p>
+
+                                <div className={styles.detailBlock}>
+                                    <h4>Challenge</h4>
+                                    <p>{selectedProject.challenges}</p>
+                                </div>
+
+                                <div className={styles.detailBlock}>
+                                    <h4>Solution</h4>
+                                    <p>{selectedProject.solution}</p>
+                                </div>
+
+                                <div className={styles.detailBlock}>
+                                    <h4>Technlogies</h4>
+                                    <div className={styles.techTags}>
+                                        {selectedProject.techStack.map(t => (
+                                            <span key={t} className={styles.techTag}>{t}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 )}

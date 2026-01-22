@@ -4,127 +4,137 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding-top: 80px; /* Offset for header */
+  background-color: #fff; /* Ensure white background for the dots */
+  color: #000;
+  padding-top: 80px; /* Space for fixed nav */
 }
 
 .background {
   position: absolute;
-  inset: 0;
-  z-index: -1;
-  background-color: hsl(var(--bg-primary));
-}
-
-.gradientSphere {
-  position: absolute;
-  top: -20%;
-  right: -10%;
-  width: 50vw;
-  height: 50vw;
-  background: radial-gradient(
-    circle,
-    hsl(var(--accent-primary) / 0.15),
-    transparent 70%
-  );
-  filter: blur(80px);
-  animation: float 20s infinite ease-in-out;
-}
-
-.noise {
-  position: absolute;
-  inset: 0;
-  opacity: 0.03;
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Let clicks pass through to the canvas if needed, wait canvas catches them */
+  /* Actually DotGrid handles clicks on window, so this is fine. 
+     But we want the text to be above the dots. 
+  */
+  z-index: 0;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; /* Center horizontally */
-  z-index: 1;
-  text-align: center; /* Center text */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+  position: relative;
+  z-index: 10;
 }
 
 .content {
-  max-width: 900px; /* Slightly wider for bold text */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  max-width: 800px;
 }
 
 .headline {
-  font-size: clamp(3rem, 6vw, 5.5rem); /* Bolder, bigger */
-  font-weight: 900; /* Black weight */
-  line-height: 1;
-  letter-spacing: -0.03em;
-  margin-bottom: var(--space-lg);
-  color: hsl(var(--text-primary));
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #000;
+  margin-bottom: 2rem;
 }
 
-/* Fallback / original gradient text class kept if needed elsewhere, though unused in Hero now */
-.gradientText {
-  color: hsl(var(--accent-primary));
-  background: none;
-  -webkit-text-fill-color: initial;
+.subHeadline {
+  color: #e5e7eb; /* Light gray for the "Optional" part if we do that style */
+  /* Or just use a class for the greyed out text */
 }
 
-.subheading {
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
-  color: hsl(var(--text-secondary));
-  margin-bottom: var(--space-2xl);
-  max-width: 65ch;
-  line-height: 1.5;
-  font-weight: 500;
+.greyText {
+  color: #9ca3af;
+  display: block;
+}
+
+.description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #4b5563;
+  margin-bottom: 3rem;
+  max-width: 500px;
 }
 
 .ctaGroup {
   display: flex;
-  justify-content: center;
-  margin-bottom: var(
-    --space-2xl
-  ); /* Add space below for scrolling interaction */
-}
-
-.primaryBtn,
-.secondaryBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: 0.75rem 1.5rem;
-  border-radius: 99px;
-  font-weight: 600;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .primaryBtn {
-  background-color: hsl(var(--text-primary));
-  color: hsl(var(--bg-primary));
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #dffe00; /* Acid lime/yellow like the image */
+  color: #000;
+  padding: 1rem 1.75rem; /* Larger padding */
+  border-radius: 4px; /* Slightly squared off like Ditto */
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition:
+    transform 0.2s,
+    filter 0.2s;
 }
 
 .primaryBtn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px hsl(var(--text-primary) / 0.2);
+  filter: brightness(0.95);
 }
 
 .secondaryBtn {
-  background-color: transparent;
-  color: hsl(var(--text-primary));
-  border: 1px solid hsl(var(--bg-tertiary));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #fff;
+  color: #000;
+  padding: 1rem 1.75rem;
+  border-radius: 4px;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid #e5e7eb;
+  transition:
+    border-color 0.2s,
+    background-color 0.2s;
 }
 
 .secondaryBtn:hover {
-  background-color: hsl(var(--bg-tertiary));
-  transform: translateY(-2px);
+  border-color: #000;
+  background-color: #f9fafb;
 }
 
-@keyframes float {
-  0%,
-  100% {
-    transform: translate(0, 0);
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .headline {
+    font-size: 3rem;
   }
-  50% {
-    transform: translate(-20px, 20px);
+
+  .ctaGroup {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .primaryBtn,
+  .secondaryBtn {
+    width: 100%;
+    justify-content: center;
   }
 }
