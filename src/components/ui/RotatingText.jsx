@@ -28,6 +28,7 @@ const RotatingText = forwardRef((props, ref) => {
         mainClassName,
         splitLevelClassName,
         elementLevelClassName,
+        mainTransition,
         ...rest
     } = props;
 
@@ -143,7 +144,7 @@ const RotatingText = forwardRef((props, ref) => {
     }, [next, rotationInterval, auto]);
 
     return (
-        <motion.span className={cn('text-rotate', mainClassName)} {...rest} layout transition={transition}>
+        <motion.span className={cn('text-rotate', mainClassName)} {...rest} layout transition={mainTransition || transition}>
             <span className="text-rotate-sr-only">{texts[currentTextIndex]}</span>
             <AnimatePresence mode={animatePresenceMode} initial={animatePresenceInitial}>
                 <motion.span

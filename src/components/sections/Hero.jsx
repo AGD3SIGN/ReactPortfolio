@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, ChevronRight, Play } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import DotGrid from '../ui/DotGrid';
+import RotatingText from '../ui/RotatingText';
 import styles from './Hero.module.css';
 
 const containerVariants = {
@@ -48,9 +49,26 @@ const Hero = () => {
                     animate="visible"
                 >
                     <motion.h1 variants={itemVariants} className={styles.headline}>
-                        Resilient Digital <br />
-                        Experiences.
-                        <span className={styles.greyText}>Servers & Cloud Optional.</span>
+                        Welcome To <br />
+                        My Portfolio!
+                        <span className={styles.greyText}>
+                            I Build Websites <br /> With
+                            <RotatingText
+                                texts={['Empathy', 'Clarity', 'Intention', 'Purpose', 'Care']}
+                                mainClassName={styles.rotatingText}
+                                staggerFrom={"last"}
+                                initial={{ y: "100%", opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                exit={{ y: "-120%", opacity: 0 }}
+                                staggerDuration={0.025}
+                                splitLevelClassName={styles.splitLevel}
+                                transition={{ type: "spring", damping: 40, stiffness: 400 }}
+                                mainTransition={{ type: "spring", damping: 20, stiffness: 120 }}
+                                rotationInterval={2500}
+                                animatePresenceMode="wait"
+                            />
+                            .
+                        </span>
                     </motion.h1>
 
                     <motion.p variants={itemVariants} className={styles.description}>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Mail, MapPin } from 'lucide-react';
-import RotatingText from '../ui/RotatingText';
 import styles from './Contact.module.css';
 
 const Contact = () => {
@@ -39,21 +38,6 @@ const Contact = () => {
                     <div className={styles.content}>
                         <h2 className={styles.heading}>
                             Let's Build Something
-                            Let's Build Something
-                            <div className={styles.rotatingWrapper}>
-                                <RotatingText
-                                    texts={['Amazing', 'Unique', 'Scalable', 'Secure']}
-                                    mainClassName={styles.rotatingText}
-                                    staggerFrom={"last"}
-                                    initial={{ y: "100%" }}
-                                    animate={{ y: 0 }}
-                                    exit={{ y: "-120%" }}
-                                    staggerDuration={0.025}
-                                    splitLevelClassName={styles.splitLevel}
-                                    transition={{ type: "spring", damping: 30, stiffness: 400 }}
-                                    rotationInterval={2000}
-                                />
-                            </div>
                         </h2>
                         <p className={styles.text}>
                             Have a project in mind or just want to say hi? I'm currently available for new opportunities.

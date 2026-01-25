@@ -1,0 +1,30 @@
+.scroll-reveal-section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Optional: if you want a subtle background distinction, you can add it here.
+       For now, we keep it transparent to blend with the main layout or use global background. */
+}
+
+.scroll-reveal {
+  /* margin: 20px 0; Removed in favor of flex centering */
+  max-width: 1200px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5rem 1rem;
+  color: var(--text-primary);
+}
+
+.scroll-reveal-text {
+  font-size: clamp(1.6rem, 4vw, 3rem);
+  line-height: 1.5;
+  font-weight: 600;
+  text-align: center;
+}
+
+.word {
+  display: inline-block;
+}

@@ -59,6 +59,27 @@
   display: block;
 }
 
+.rotatingText {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.2em; /* Slightly taller for breathing room */
+  vertical-align: bottom; /* checking this alignment */
+  background-color: #dffe00; /* Acid highlight */
+  color: #000;
+  font-weight: 800;
+  padding: 0 0.8rem; /* More horizontal padding */
+  margin-left: 0.6rem;
+  border-radius: 30px; /* Pill shape */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.splitLevel {
+  display: inline-block;
+  line-height: 1; /* Fix vertical alignment issues */
+}
+
 .description {
   font-size: 1.125rem;
   line-height: 1.6;

@@ -26,6 +26,7 @@ const StickyNav = () => {
                 animate={{ y: 0 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
                 style={{
+                    position: 'relative',
                     backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.8)',
                     boxShadow: scrolled ? '0 4px 20px rgba(0,0,0,0.05)' : 'none'
                 }}
